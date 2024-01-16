@@ -12,11 +12,11 @@ export class LoginService{
 
             try{
 
-                    const {Email,password} = data;
+                    const {email,password} = data;
 
-                    const result = await this.prisma.suscripcion.findMany({
+                    const result = await this.prisma.subscription.findMany({
                         where:{
-                            email:Email
+                            email
                         }
                     });
 
@@ -28,15 +28,14 @@ export class LoginService{
                         const token =
                         {
                         "Id":result[0].id,
-                        "Nombre":result[0].nombre,
-                        "Movil":result[0].movil,
+                        "Name":result[0].name,
                         "Email":result[0].email,
                         }
 
                         return token;
                     }
 
-                return "Suscriptor no Existe";
+                return "Subscriber does not exist.";
 
 
 
@@ -48,15 +47,15 @@ export class LoginService{
     }
 
 
-    async LoginUsuario(data:any):Promise<any>{
+    async LoginUser(data:any):Promise<any>{
 
         try{
 
-                const {Correo,password} = data;
+                const {email,password} = data;
                 
-                const result = await this.prisma.usuario.findMany({
+                const result = await this.prisma.user.findMany({
                     where:{
-                        correo:Correo
+                        email
                     }
                 });
 
@@ -68,14 +67,14 @@ export class LoginService{
                         const token =
                         {
                         "Id":result[0].id,
-                        "NombreCompleto":result[0].nombrecompleto,
-                        "Correo":result[0].correo,
+                        "FullName":result[0].fullName,
+                        "Email":result[0].email,
                         }
                     
                         return token;
                 }
 
-                return "Usuario no Existe";
+                return "User does not exist.";
 
         }catch (error) {
 

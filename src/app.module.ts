@@ -1,43 +1,61 @@
 import { Module } from '@nestjs/common';
-import { CategoriaVacantesModule } from './CategoriaVacante/CatVac.module';
-import { DocumentoModule } from './Documentos/Doc.module';
-import { EducacionModule } from './Educacion/Educ.module';
-import { PuestoSolicitadoModule } from './PuestoSolicitado/PuSo.module';
-import { ExperienciaLaboralModule } from './ExperienciaLaboral/ExLa.module';
-import { FormacionComplementariaModule } from './FormacionComplementaria/ForCom.module';
-import { IdiomaModule } from './Idioma/Idioma.module';
-import { ImagenModule } from './Imagen/Imagen.module';
-import { InformePerfilModule } from './InformePerfil/InfPer.module';
-import { PeriodoModule } from './PeriodoVacante/Periodo.module';
-import { ReferenciasLaboralesModule } from './ReferenciasLaborales/RefLab.module';
-import { ReferenciasPersonalesModule } from './ReferenciasPersonales/RefPer.module'; 
-import { SuscripcionModule } from './Suscripcion/Suscripcion.module';
-import { VacantesModule } from './Vacantes/Vacantes.module';
-import { UsuarioModule } from './Usuario/Usuario.module';
-import { CorreoModule } from './Correo/Correo.module';
-import { MostrarPDFModule } from './MostrarPdf/MostrarPdf.module';
+import { CategoryModule } from './Category/Category.module';
+import { DocumentModule } from './Document/Document.module';
+import { EducationModule } from './Education/Education.module';
+import { PositionAppliedForModule } from './PositionAppliedFor/PositionAppliedFor.module';
+import { WorkExperienceModule } from './WorkExperience/WorkExperience.module';
+import { TrainingModule } from './Training/Training.module';
+import { LanguageModule } from './Language/Language.module';
+import { ProfilePictureModule } from './ProfilePicture/ProfilePicture.module';
+import { ProfileModule } from './Profile/Profile.module';
+import { PeriodModule } from './Period/Period.module';
+import { ProfessionalReferencesModule } from './ProfessionalReferences/ProfessionalReferences.module';
+import { PersonalReferencesModule } from './PersonalReferences/PersonalReferences.module';
+import { SubscriptionModule } from './Subscription/Subscription.module';
+import { JobOpeningModule } from './JobOpening/JobOpening.module';
+import { UserModule } from './User/User.module';
+import { EmailModule } from './Email/Email.module';
+import { ShowPDFModule } from './ShowPdf/ShowPdf.module';
+import { ShowImgModule } from './ShowImg/ShowImg.module'
 import { LoginModule } from './Login/Login.module';
+import { ProfileAssessmentModule } from './ProfileAssessment/ProfileAssessment.module';
+import { LanguageAssessmentModule } from './LanguageAssessment/LanguageAssessment.module';
+import { KnowledgeAssessmentModule } from './KnowledgeAssessment/KnowledgeAssessment.module';
+import { ProfileParticularsModule } from './ProfileParticulars/ProfileParticulars.module';
+import { ProfileAnswerModule } from './ProfileAnswer/ProfileAnswer.module';
+import { LanguageAnswerModule } from './LanguageAnswer/LanguageAnswer.module';
+import { KnowledgeAnswerModule } from './KnowledgeAnswer/KnowledgeAnswer.module';
+import { ProfileParticularsAnswerModule } from './ProfileParticularsAnswer/ProfileParticularsAnswer.module';
 
 @Module({
   imports: [
-    CategoriaVacantesModule,
-    DocumentoModule,
-    EducacionModule,
-    PuestoSolicitadoModule,
-    ExperienciaLaboralModule,
-    FormacionComplementariaModule,
-    IdiomaModule,
-    ImagenModule,
-    InformePerfilModule,
-    PeriodoModule,
-    ReferenciasLaboralesModule,
-    ReferenciasPersonalesModule,
-    SuscripcionModule,
-    VacantesModule,
-    UsuarioModule,
-    CorreoModule,
-    MostrarPDFModule,
-    LoginModule
+    CategoryModule,
+    DocumentModule,
+    EducationModule,
+    PositionAppliedForModule,
+    WorkExperienceModule,
+    TrainingModule,
+    LanguageModule,
+    ProfilePictureModule,
+    ProfileModule,
+    PeriodModule,
+    ProfessionalReferencesModule,
+    PersonalReferencesModule,
+    SubscriptionModule,
+    JobOpeningModule,
+    UserModule,
+    EmailModule,
+    ShowPDFModule,
+    ShowImgModule,
+    LoginModule,
+    ProfileAssessmentModule,
+    LanguageAssessmentModule,
+    KnowledgeAssessmentModule,
+    ProfileParticularsModule,
+    ProfileAnswerModule,
+    LanguageAnswerModule,
+    KnowledgeAnswerModule,
+    ProfileParticularsAnswerModule
 
   ],
   controllers: [],

@@ -7,187 +7,301 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model categoriavacantes {
-  id            Int        @id(map: "pk__categori__3214ec0775cfcb4b") @default(autoincrement())
-  categoria     String?    @db.VarChar(50)
-  fecharegistro DateTime?
-  vacantes      vacantes[]
+model Category {
+  id               Int          @id @default(autoincrement())
+  category         String?
+  registrationDate DateTime?
+  jobOpening       JobOpening[]
 }
 
-model documentos {
-  id            Int          @id(map: "pk__curricul__3214ec079f7cc7ef") @default(autoincrement())
-  idsuscripcion Int?
-  nombre        String?      @db.VarChar(300)
-  size          String?      @db.VarChar(50)
-  fechacreacion DateTime?
-  fecharegistro DateTime?
-  suscripcion   suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__curriculu__idsus__4ab81af0")
+model Document {
+  id               Int           @id @default(autoincrement())
+  idSubscription   Int?
+  name             String?
+  size             String?
+  registrationDate DateTime?
+  subscription     Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model educacion {
-  id                   Int          @id(map: "pk__educacio__3214ec070f33ac75") @default(autoincrement())
-  idsuscripcion        Int?
-  preparacionacademica String?
-  instituci_n          String?      @map("institución") @db.VarChar(120)
-  areaestudio          String?      @db.VarChar(120)
-  titulootorgado       String?      @db.VarChar(150)
-  estadoestudio        String?      @db.VarChar(50)
-  fechaexpedicion      String?      @db.VarChar(50)
-  inicioestudio        String?      @db.VarChar(50)
-  terminoestudio       String?      @db.VarChar(50)
-  fecharegistro        DateTime?
-  suscripcion          suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__educacion__idsus__4bac3f29")
+model Education {
+  id                  Int           @id @default(autoincrement())
+  idSubscription      Int?
+  academicPreparation String?
+  institution         String?
+  fieldStudy          String?
+  degreeAwarded       String?
+  studyStatus         String?
+  issueDate           String?
+  startStudy          String?
+  endStudy            String?
+  registrationDate    DateTime?
+  subscription        Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model experiencialaboralexterna {
-  id              Int          @id(map: "pk__experien__3214ec071f0170e4") @default(autoincrement())
-  idsuscripcion   Int?
-  fechainicial    String?      @db.VarChar(50)
-  fechafinal      String?      @db.VarChar(50)
-  nombrecompania  String?      @db.VarChar(50)
-  puesto          String?      @db.VarChar(50)
-  salario         String?      @db.VarChar(50)
-  areapuesto      String?      @db.VarChar(120)
-  industria       String?      @db.VarChar(50)
-  supervisor      String?      @db.VarChar(120)
-  funcioneslogros String?
-  telefono        String?      @db.VarChar(50)
-  fecharegistro   DateTime?
-  suscripcion     suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__experienc__idsus__4ca06362")
+model WorkExperience {
+  id                           Int           @id @default(autoincrement())
+  idSubscription               Int?
+  startDate                    String?
+  endDate                      String?
+  companyName                  String?
+  position                     String?
+  salary                       String?
+  jobArea                      String?
+  industry                     String?
+  supervisor                   String?
+  responsibilitiesAchievements String?
+  phoneNumber                  String?
+  registrationDate             DateTime?
+  subscription                 Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model formacioncomple {
-  id            Int          @id(map: "pk__formacio__3214ec074e1dd9cb") @default(autoincrement())
-  idsuscripcion Int?
-  certificado   String?      @db.VarChar(50)
-  fechainicio   String?      @db.VarChar(120)
-  fechafinal    String?      @db.VarChar(120)
-  estadocerti   String?      @db.VarChar(50)
-  fecharegistro DateTime?
-  suscripcion   suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__formacion__idsus__4d94879b")
+model Training {
+  id                Int           @id @default(autoincrement())
+  idSubscription    Int?
+  certificate       String?
+  startDate         String?
+  endDate           String?
+  certificateStatus String?
+  level             String?
+  registrationDate  DateTime?
+  subscription      Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model idioma {
-  id                Int          @id(map: "pk__idioma__3214ec072d6890c3") @default(autoincrement())
-  idsuscripcion     Int?
-  idioma            String?      @db.VarChar(50)
-  nombreinstitucion String?      @db.VarChar(50)
-  nivelconversacion String?      @db.VarChar(50)
-  nivellectura      String?      @db.VarChar(50)
-  nivelescritura    String?      @db.VarChar(50)
-  capacidadtraducir String?      @db.VarChar(50)
-  fecharegistro     DateTime?
-  suscripcion       suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__idioma__idsuscri__4e88abd4")
+model Language {
+  id                 Int           @id @default(autoincrement())
+  idSubscription     Int?
+  language           String?
+  institutionName    String?
+  conversationLevel  String?
+  readingLevel       String?
+  writingLevel       String?
+  translationAbility String?
+  level              String?
+  registrationDate   DateTime?
+  subscription       Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model imagenperf {
-  id            Int       @id(map: "pk__imagenpe__3214ec073e51ffa7") @default(autoincrement())
-  idsuscripcion Int?
-  nombre        String?
-  fecharegistro DateTime?
+model ProfilePicture {
+  id               Int           @id @default(autoincrement())
+  idSubscription   Int?
+  name             String?
+  registrationDate DateTime?
+  subscription     Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model informeperfil {
-  id                  Int          @id(map: "pk__informep__3214ec07613f253a") @default(autoincrement())
-  idsuscripcion       Int?
-  nombre              String?      @db.VarChar(120)
-  apellidos           String?      @db.VarChar(120)
-  email               String?      @db.VarChar(120)
-  movil               String?      @db.VarChar(50)
-  telefonofijo        String?      @db.VarChar(50)
-  paisnacimiento      String?      @db.VarChar(50)
-  nacionalidad        String?      @db.VarChar(50)
-  sexo                String?      @db.VarChar(10)
-  fechanacimiento     String?      @db.VarChar(50)
-  tipodocumento       String?      @db.VarChar(50)
-  numerodocumento     String?      @db.VarChar(50)
-  estadocivil         String?      @db.VarChar(20)
-  provincia           String?      @db.VarChar(20)
-  parientetrabajo     String?      @db.VarChar(50)
-  tienelicencondicir  String?      @db.VarChar(10)
-  possevehiculo       String?      @db.VarChar(10)
-  parentescoemergente String?      @db.VarChar(120)
-  nombreparentesco    String?      @db.VarChar(50)
-  telefonoparentesco  String?      @db.VarChar(50)
-  suleldoaspira       String?      @db.VarChar(50)
-  preguntaempleado    String?      @db.VarChar(50)
-  preguntapariente    String?      @db.VarChar(50)
-  fecharegistro       DateTime?
-  suscripcion         suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__informepe__idsus__4f7cd00d")
+model Profile {
+  id                   Int           @id @default(autoincrement())
+  idSubscription       Int?
+  name                 String?
+  lastName             String?
+  email                String?
+  mobile               String?
+  landline             String?
+  countryBirth         String?
+  nationality          String?
+  sex                  String?
+  birthDate            String?
+  documentType         String?
+  documentNumber       String?
+  civilStatus          String?
+  province             String?
+  driverLicense        String?
+  ownsVehicle          String?
+  relationship         String?
+  relationshipName     String?
+  relationshipLandline String?
+  relationshipWork     String?
+  salaryDesired        String?
+  Question             String?
+  relationshipQuestion String?
+  registrationDate     DateTime?
+  subscription         Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model periodo {
-  id            Int       @id(map: "pk__periodo__3214ec0711fd1d05") @default(autoincrement())
-  idvacante     Int?
-  estado        String?   @db.VarChar(20)
-  fecharegistro DateTime?
+model Period {
+  id               Int         @id @default(autoincrement())
+  idJobOpening     Int?
+  status           String?
+  registrationDate DateTime?
+  jobOpening       JobOpening? @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model referenciaslaborales {
-  id             Int          @id(map: "pk__referenc__3214ec07a60e635d") @default(autoincrement())
-  idsuscripcion  Int?
-  nombrecompleto String?      @db.VarChar(150)
-  telefono       String?      @db.VarChar(150)
-  profesion      String?      @db.VarChar(200)
-  relacion       String?      @db.VarChar(50)
-  fecharegistro  DateTime?
-  suscripcion    suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__referenci__idsus__5070f446")
+model ProfessionalReferences {
+  id               Int           @id @default(autoincrement())
+  idSubscription   Int?
+  fullName         String?
+  landline         String?
+  profession       String?
+  relationship     String?
+  registrationDate DateTime?
+  subscription     Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model referenciaspersonales {
-  id             Int          @id(map: "pk__referenc__3214ec076355bd5e") @default(autoincrement())
-  idsuscripcion  Int?
-  nombrecompleto String?      @db.VarChar(150)
-  telefono       String?      @db.VarChar(50)
-  ocupacion      String?      @db.VarChar(50)
-  fecharegistro  DateTime?
-  suscripcion    suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__referenci__idsus__5165187f")
+model PersonalReferences {
+  id               Int           @id @default(autoincrement())
+  idSubscription   Int?
+  fullName         String?
+  landline         String?
+  occupation       String?
+  registrationDate DateTime?
+  subscription     Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model suscripcion {
-  id                        Int                         @id(map: "pk__suscripc__3214ec076487a8c9") @default(autoincrement())
-  nombre                    String                      @db.VarChar(120)
-  movil                     String?                     @db.VarChar(50)
-  email                     String?                     @db.VarChar(120)
-  password                  String?
-  fecharegistro             DateTime?
-  curriculum                documentos[]
-  educacion                 educacion[]
-  experiencialaboralexterna experiencialaboralexterna[]
-  formacioncomple           formacioncomple[]
-  idioma                    idioma[]
-  informeperfil             informeperfil[]
-  referenciaslaborales      referenciaslaborales[]
-  referenciaspersonales     referenciaspersonales[]
-  usuariovacante            usuariovacante[]
+model Subscription {
+  id                       Int                        @id @default(autoincrement())
+  name                     String?
+  email                    String?
+  password                 String?
+  registrationDate         DateTime?
+  documet                  Document[]
+  education                Education[]
+  workExperience           WorkExperience[]
+  training                 Training[]
+  language                 Language[]
+  profile                  Profile[]
+  professionalReferences   ProfessionalReferences[]
+  personalReferences       PersonalReferences[]
+  positionAppliedFor       PositionAppliedFor[]
+  profilePicture           ProfilePicture[]
+  profileAnswer            ProfileAnswer[]
+  languageAnswer           LanguageAnswer[]
+  knowledgeAnswer          KnowledgeAnswer[]
+  profileParticularsAnswer ProfileParticularsAnswer[]
 }
 
-model usuario {
-  id             Int       @id(map: "pk__usuario__3214ec07361fb02d") @default(autoincrement())
-  nombrecompleto String?   @db.VarChar(50)
-  correo         String?   @db.VarChar(120)
-  password       String?
-  fecharegistro  DateTime?
+model User {
+  id               Int       @id @default(autoincrement())
+  fullName         String?
+  email            String?
+  password         String?
+  registrationDate DateTime?
 }
 
-model usuariovacante {
-  id            Int          @id(map: "pk__usuariov__3214ec07a0608920") @default(autoincrement())
-  idsuscripcion Int?
-  idvacante     Int?
-  fecharegistro DateTime?
-  estado        String?      @db.VarChar(20)
-  suscripcion   suscripcion? @relation(fields: [idsuscripcion], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__usuariova__idsus__52593cb8")
-  vacantes      vacantes?    @relation(fields: [idvacante], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__usuariova__idvac__534d60f1")
+model PositionAppliedFor {
+  id               Int           @id @default(autoincrement())
+  idSubscription   Int?
+  idJobOpening     Int?
+  status           String?
+  registrationDate DateTime?
+  subscription     Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  jobOpening       JobOpening?   @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model vacantes {
-  id                Int                @id(map: "pk__vacantes__3214ec07dda686b3") @default(autoincrement())
-  nombrevacante     String             @db.VarChar(200)
-  responsabilidades String
-  perfilpuesto      String
-  fecharegistro     DateTime?
-  condicion         String?            @db.VarChar(20)
-  idcategoria       Int?
-  usuariovacante    usuariovacante[]
-  categoriavacantes categoriavacantes? @relation(fields: [idcategoria], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk__vacantes__idcate__5441852a")
+model JobOpening {
+  id                       Int                        @id @default(autoincrement())
+  idCategory               Int?
+  name                     String?
+  responsibilities         String?
+  profile                  String?
+  status                   String?
+  registrationDate         DateTime?
+  positionAppliedFor       PositionAppliedFor[]
+  period                   Period[]
+  languageAssessment       LanguageAssessment[]
+  profileAssessment        ProfileAssessment[]
+  knowledgeAssessment      KnowledgeAssessment[]
+  profileParticulars       ProfileParticulars[]
+  profileAnswer            ProfileAnswer[]
+  languageAnswer           LanguageAnswer[]
+  knowledgeAnswer          KnowledgeAnswer[]
+  profileParticularsAnswer ProfileParticularsAnswer[]
+  category                 Category?                  @relation(fields: [idCategory], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+//.............................................................
+
+model ProfileAssessment {
+  id               Int         @id @default(autoincrement())
+  idJobOpening     Int?
+  sex              String?
+  edad             String?
+  workExperience   String?
+  education        String?
+  registrationDate DateTime?
+  jobOpening       JobOpening? @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model LanguageAssessment {
+  id               Int         @id @default(autoincrement())
+  idJobOpening     Int?
+  language         String?
+  answerLan        String?
+  registrationDate DateTime?
+  jobOpening       JobOpening? @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model KnowledgeAssessment {
+  id               Int         @id @default(autoincrement())
+  idJobOpening     Int?
+  knowledge        String?
+  answerKnow       String?
+  registrationDate DateTime?
+  jobOpening       JobOpening? @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model ProfileParticulars {
+  id               Int         @id @default(autoincrement())
+  idJobOpening     Int?
+  ask              String?
+  answerProf       String?
+  registrationDate DateTime?
+  jobOpening       JobOpening? @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+//..............................................................
+model ProfileAnswer {
+  id                       Int           @id @default(autoincrement())
+  idJobOpening             Int?
+  idSubscription           Int?
+  sex                      String?
+  edad                     String?
+  workExperience           String?
+  education                String?
+  sexAssessment            String?
+  edadAssessment           String?
+  workExperienceAssessment String?
+  educationAssessment      String?
+  status                   String?
+  registrationDate         DateTime?
+  jobOpening               JobOpening?   @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  subscription             Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model LanguageAnswer {
+  id                       Int           @id @default(autoincrement())
+  idJobOpening             Int?
+  idSubscription           Int?
+  language                 String?
+  answerLanguage           String?
+  answerLanguageAssessment String?
+  status                   String?
+  registrationDate         DateTime?
+  jobOpening               JobOpening?   @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  subscription             Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model KnowledgeAnswer {
+  id                        Int           @id @default(autoincrement())
+  idJobOpening              Int?
+  idSubscription            Int?
+  knowledge                 String?
+  answerKnowledge           String?
+  answerKnowledgeAssessment String?
+  status                    String?
+  registrationDate          DateTime?
+  jobOpening                JobOpening?   @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  subscription              Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model ProfileParticularsAnswer {
+  id                                 Int           @id @default(autoincrement())
+  idJobOpening                       Int?
+  idSubscription                     Int?
+  ask                                String?
+  answerProfileParticulars           String?
+  answerProfileParticularsAssessment String?
+  status                             String?
+  registrationDate                   DateTime?
+  jobOpening                         JobOpening?   @relation(fields: [idJobOpening], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  subscription                       Subscription? @relation(fields: [idSubscription], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

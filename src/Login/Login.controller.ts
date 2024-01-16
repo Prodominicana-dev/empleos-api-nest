@@ -1,4 +1,4 @@
-import {Controller,Get,Post,Put,Delete, Body, Param, NotFoundException} from "@nestjs/common";
+import {Controller,Post,Body} from "@nestjs/common";
 import { LoginService } from "./Login.service";
 
 
@@ -15,10 +15,10 @@ export class LoginController {
     }
 
 
-    @Post('loginUsuario')
-    async LoginUsuario(@Body() data:any){
+    @Post('loginUser')
+    async LoginUser(@Body() data:any){
 
-        return this.LoginService.LoginUsuario(data);
+        return this.LoginService.LoginUser(data);
 
     }
 
