@@ -8,6 +8,6 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Habilita el intercambio de credenciales (si es necesario)
   });
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();
