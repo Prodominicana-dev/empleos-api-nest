@@ -28,6 +28,7 @@ export class UserService{
 
         const hashedPassword = bcrypt.hashSync(data.password,10)
         data.password = hashedPassword;
+        data.registrationDate = new Date();
 
         try {
 

@@ -19,6 +19,7 @@ export class KnowledgeAssessmentService{
     }
 
     async createKnowledgeAssessment(data: KnowledgeAssessment): Promise<KnowledgeAssessment>{
+        data.registrationDate = new Date();
         return this.prisma.knowledgeAssessment.create({
                 data
         });

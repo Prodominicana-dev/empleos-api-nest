@@ -19,6 +19,7 @@ export class LanguageAssessmentService{
     }
 
     async createLanguageAssessment(data: LanguageAssessment): Promise<LanguageAssessment>{
+        data.registrationDate = new Date();
         return this.prisma.languageAssessment.create({
                 data
         });
