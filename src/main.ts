@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: {
-    origin: ['https://empleosadmin.prodominicana.gob.do/', 'https://empleos.prodominicana.gob.do/'],
+    origin: ['https://empleosadmin.prodominicana.gob.do', 'https://empleos.prodominicana.gob.do'],
     methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
     credentials: true
   } });
