@@ -1,4 +1,4 @@
-name: Deploy empleos-api-nest
+name: Deploy EmpleosApi
 on:
   push:
     branches:
@@ -21,8 +21,8 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             # Comandos a ejecutar en el servidor remoto
-            cd /var/www/empleos-api-nest
+            cd /var/www/EmpleosApi
             git reset --hard HEAD
             git pull
             npm install
-            pm2 startOrRestart ecosystem.config.js
+            pm2 start ecosystem.config.js
