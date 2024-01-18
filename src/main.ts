@@ -12,7 +12,7 @@ async function bootstrap() {
 
   const corsOptions: CorsOptions = {
     origin: ['https://empleos.prodominicana.gob.do', 'https://empleosadmin.prodominicana.gob.do'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
     credentials: true,
   };
 
