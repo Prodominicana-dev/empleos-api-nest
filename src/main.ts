@@ -13,7 +13,7 @@ async function bootstrap() {
 
   // Configurar CORS para permitir cualquier origen
   app.enableCors({
-    origin: 'https://empleos.prodominicana.gob.do/admin',
+    origin: '*',
     methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
     credentials: true,
   });
