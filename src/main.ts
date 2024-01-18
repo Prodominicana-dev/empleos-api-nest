@@ -9,7 +9,7 @@ async function bootstrap() {
   //   credentials: true
   // } });
 
-  const app = await NestFactory.create(AppModule, { cors: true });
+  //const app = await NestFactory.create(AppModule, { cors: true });
   // const app = await NestFactory.create(AppModule);
 
   // // const app = await NestFactory.create(AppModule, { cors: {
@@ -26,14 +26,14 @@ async function bootstrap() {
   // };
 
   // app.enableCors(corsOptions);
-  // const app = await NestFactory.create(AppModule);
+   const app = await NestFactory.create(AppModule);
 
-  // // Configurar CORS para permitir cualquier origen
-  // app.enableCors({
-  //   origin: '*',
-  //   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-  //   credentials: true,
-  // });
+  // Configurar CORS para permitir cualquier origen
+  app.enableCors({
+    origin: ['https://empleosadmin.prodominicana.gob.do','https://empleos.prodominicana.gob.do'],
+    methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
+    credentials: true,
+  });
 
 
 
