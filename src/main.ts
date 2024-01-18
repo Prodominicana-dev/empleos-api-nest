@@ -8,15 +8,25 @@ async function bootstrap() {
   //   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
   //   credentials: true
   // } });
+  // const app = await NestFactory.create(AppModule);
+
+  // const corsOptions: CorsOptions = {
+  //   origin: '*',
+  //   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
+  //   credentials: true,
+  // };
+
+  // app.enableCors(corsOptions);
   const app = await NestFactory.create(AppModule);
 
-  const corsOptions: CorsOptions = {
+  // Configurar CORS para permitir cualquier origen
+  app.enableCors({
     origin: '*',
     methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
     credentials: true,
-  };
+  });
 
-  app.enableCors(corsOptions);
+
 
   await app.listen(3001);
 }
