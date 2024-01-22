@@ -8,7 +8,8 @@ async function bootstrap() {
 
     origin: ['https://empleosadmin.prodominicana.gob.do','https://empleos.prodominicana.gob.do','http://localhost:3000','http://localhost:3001'],
     methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-    credentials: true
+    credentials: true,
+    allowedHeaders: 'Content-Type, Authorization',
 
 
   } });
