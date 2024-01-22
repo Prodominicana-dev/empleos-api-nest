@@ -2,10 +2,10 @@
 module.exports = {
     apps: [
       {
-        name: 'EmpleosApi',
+        name: 'EmpleosApi2',
         script: 'npm',
         args: 'start',
-        cwd: '/var/www/node/EmpleosApi', // Ruta del directorio del proyecto en el servidor
+        cwd: '/var/www/node/EmpleosApi2', // Ruta del directorio del proyecto en el servidor
         instances: 1, // Número de instancias que deseas ejecutar
         autorestart: true, // Hacer que la aplicación se reinicie automáticamente si falla
         watch: false, // Desactivar el monitoreo de cambios en los archivos para reiniciar automáticamente
