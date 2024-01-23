@@ -1,8 +1,8 @@
-name: Deploy EmpleosApi2
+name: Deploy EmpleosApi
 on:
   push:
     branches:
-      - master # Cambiar esto al nombre de la rama que quieres que despliegue el proyecto
+      - main # Cambiar esto al nombre de la rama que quieres que despliegue el proyecto
 
 jobs:
   deploy:
@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             # Comandos a ejecutar en el servidor remoto
-            cd /var/www/node/EmpleosApi2
+            cd /var/www/node/EmpleosApi
             git reset --hard HEAD
             git pull
             npm install
