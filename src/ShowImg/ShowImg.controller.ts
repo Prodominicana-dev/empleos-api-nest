@@ -15,7 +15,7 @@ export class ShowImgController{
 
      
     @Get('VerImg/:name')
-    @Header('Content-Type', 'image/png, image/jpeg, image/gif')
+    @Header('Content-Type', 'image/*')
     @Header('Content-Disposition', 'inline')
     async getPDF(@Param('name') name:string) {
        
