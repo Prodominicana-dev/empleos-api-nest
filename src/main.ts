@@ -26,7 +26,7 @@ async function bootstrap() {
   // } });
   
   
-  app.use(express.json());
+  
 
 
   await app.listen(3001);
