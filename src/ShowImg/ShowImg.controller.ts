@@ -27,7 +27,7 @@ export class ShowImgController{
     // }  
     @Get('VerImg/:name')
   async getImg(@Param('name') name: string, @Res() res: Response) {
-    const imagePath = join(process.cwd(), './uploadImg/', name); // Ruta completa del archivo de imagen
+    const imagePath = join(process.cwd(), './uploadimg/', name); // Ruta completa del archivo de imagen
 
     // Verificar si el archivo existe
     try {
