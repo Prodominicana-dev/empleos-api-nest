@@ -7,7 +7,13 @@ export class JobOpeningService{
     constructor(private prisma: PrismaService){}
 
     async getAllJobOpening(): Promise<JobOpening[]>{
-        return await this.prisma.jobOpening.findMany();
+        return await this.prisma.jobOpening.findMany({
+            orderBy: {
+              
+              // Por ejemplo, "createdAt" para ordenar por fecha de creación
+              registrationDate: 'asc', // o 'desc' para orden descendente
+            },
+        });
     }
 
     async getJobOpeningById(id: number): Promise<JobOpening>{
