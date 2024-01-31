@@ -1,8 +1,9 @@
 import {Injectable,StreamableFile} from "@nestjs/common";
 import { ProfilePicture } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
-import { createReadStream } from "fs";
-import { join } from 'path';
+// import { createReadStream } from "fs";
+// import { join } from 'path';
+// import { Response } from 'express';
 @Injectable()
 export class ShowImgService{
 
@@ -18,11 +19,11 @@ export class ShowImgService{
     }
 
    
-    async getImg(name: string ):Promise<StreamableFile> {
+    // async getImg(name: string ):Promise<StreamableFile> {
 
-        const img = createReadStream(join(process.cwd(),'./uploadImg/', name));
-        return new StreamableFile(img);
+    //     const img = createReadStream(join(process.cwd(),'./uploadImg/', name));
+    //     return new StreamableFile(img);
 
-    }
+    // }
 
 }
